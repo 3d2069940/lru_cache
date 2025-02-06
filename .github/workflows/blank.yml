@@ -1,0 +1,38 @@
+name: CMake Build and Test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install CMake And GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake gcc
+          
+      - name: Install GTest and GBenchmark
+        run: |
+          sudo apt-get install -y libgtest-dev libbenchmark-dev
+
+      - name: Running CMake
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" .
+
+      - name: Building
+        run: |
+          cmake --build build -j
+
+      - name: Running Tests
+        run: |
+          ./build/tests
