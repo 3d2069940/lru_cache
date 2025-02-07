@@ -178,3 +178,88 @@ TEST(CircularDoublyLinkedListTest, PopFront)
   }
 }
 //----------------------------------------------------------------------------
+TEST(CircularDoublyLinkedListTest, ToFront)
+{
+  {
+    CircularDoublyLinkedList<int> list;
+
+    list.pushFront(10);
+    EXPECT_EQ(10, list.front());
+
+    auto it = list.begin();
+    list.toFront(it);
+
+    EXPECT_EQ(10, list.front());
+  }
+  {
+    CircularDoublyLinkedList<int> list;
+
+    list.pushFront(20);
+    list.pushFront(10);
+    EXPECT_EQ(10, list.front());
+    EXPECT_EQ(20, list.back());
+    auto it = list.begin();
+    ++it;
+    list.toFront(it);
+    EXPECT_EQ(20, list.front());
+    EXPECT_EQ(10, list.back());
+  }
+  {
+    CircularDoublyLinkedList<int> list;
+
+    list.pushFront(30);
+    list.pushFront(20);
+    list.pushFront(10);
+    EXPECT_EQ(10, list.front());
+    EXPECT_EQ(30, list.back());
+    auto it = list.begin();
+    ++it;
+    list.toFront(it);
+    EXPECT_EQ(20, list.front());
+    EXPECT_EQ(30, list.back());
+  }
+}
+//----------------------------------------------------------------------------
+TEST(CircularDoublyLinkedListTest, ToBack)
+{
+  {
+    CircularDoublyLinkedList<int> list;
+
+    list.pushFront(10);
+    EXPECT_EQ(10, list.front());
+
+    auto it = list.begin();
+    list.toBack(it);
+
+    EXPECT_EQ(10, list.front());
+  }
+  {
+    CircularDoublyLinkedList<int> list;
+
+    list.pushFront(20);
+    list.pushFront(10);
+    EXPECT_EQ(10, list.front());
+    EXPECT_EQ(20, list.back());
+
+    auto it = list.begin();
+    list.toBack(it);
+
+    EXPECT_EQ(20, list.front());
+    EXPECT_EQ(10, list.back());
+  }
+  {
+    CircularDoublyLinkedList<int> list;
+
+    list.pushFront(30);
+    list.pushFront(20);
+    list.pushFront(10);
+    EXPECT_EQ(10, list.front());
+    EXPECT_EQ(30, list.back());
+    auto it = list.begin();
+    ++it;
+    list.toBack(it);
+    EXPECT_EQ(10, list.front());
+    EXPECT_EQ(20, list.back());
+  }
+}
+//----------------------------------------------------------------------------

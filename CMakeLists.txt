@@ -13,6 +13,7 @@ set(LRU_CACHE_SRC
 add_executable(tests
   tests/main.cpp
   tests/circular_doubly_linked_list_tests.cpp
+  tests/lru_cache_tests.cpp
 )
 
 target_sources(tests PRIVATE ${LRU_CACHE_SRC})
