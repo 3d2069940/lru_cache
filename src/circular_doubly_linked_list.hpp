@@ -425,6 +425,7 @@ void CircularDoublyLinkedList<ValueT, Alloc>::toBack(iterator it)
   NodeT * prev = it->prev_;
   NodeT * next = it->next_;
   NodeT * old  = it->prev_->next_;
+  
   if (old == node_)
   {
     node_ = next;
