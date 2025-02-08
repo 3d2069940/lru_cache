@@ -36,3 +36,7 @@ jobs:
       - name: Running Tests
         run: |
           ./build/tests
+
+      - name: Running Benchmark
+        run: |
+          ./build/benchmark_exec
