@@ -27,7 +27,7 @@ jobs:
 
       - name: Running CMake
         run: |
-          cmake -B build -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" .
+          cmake -B build -DCMAKE_BUILD_TYPE=Release -DCOMPILE_EXAMPLES=ON -G "Unix Makefiles" .
 
       - name: Building
         run: |

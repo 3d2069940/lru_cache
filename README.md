@@ -21,13 +21,13 @@ To install the LRU Cache, follow these steps:
     git clone https://github.com/3d2069940/lru_cache.git && cd lru_cache
     ```
 
-2. And just copy all the hpp files from `lru_cache/src` right into your project!
+2. And just copy `lru_cache.hpp` from `lru_cache/src` right into your project!
 
-3. Optional step. If you wanna build tests and benchmark install the following dependencies:
+3. Optional step. If you want to build tests and benchmark install the following dependencies:
 
     - CMake: [Github](https://github.com/Kitware/CMake) | [Website](https://cmake.org/)
 
-    - Compiler with C++17 support or higher: [GCC](https://gcc.gnu.org/releases.html), [Clang](https://releases.llvm.org/download.html)
+    - Compiler with C++11 support or higher: [GCC](https://gcc.gnu.org/releases.html), [Clang](https://releases.llvm.org/download.html)
 
     - [GTest](https://github.com/google/googletest) and [Google Benchmark](https://github.com/google/benchmark) can be installed as an option
 
@@ -54,14 +54,14 @@ To install the LRU Cache, follow these steps:
 
 int main()
 {
-  LRUCache<int, std::string> cache;
+  LRUCache::Cache<int, std::string> cache;
 
   cache.put(1, "string");
 
-  auto * strPtr = cache.get(1);
+  auto * cacheEntry = cache.get(1);
 
-  if (strPtr != nullptr)
-    std::cout << *strPtr << std::endl; // prints "string"
+  if (cacheEntry != nullptr)
+    std::cout << *cacheEntry << std::endl; // prints "string"
 }
 ```
 
